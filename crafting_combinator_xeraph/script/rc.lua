@@ -86,7 +86,7 @@ local function add_compakt_circuits_integration()
 					raise_built = false,
 				}, "packed entity not built")
 
-				_M.create(packed_input, info.settings)
+				_M.create(packed_input, {crafting_combinator_data={settings=info.settings}})
 
 				return packed_input
 			end,

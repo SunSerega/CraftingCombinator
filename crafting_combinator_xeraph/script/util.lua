@@ -144,7 +144,9 @@ end
 ---@param migrated_state? table
 ---@return table
 function _M.merge_combinator_settings(default_settings, tags, migrated_state)
-	local tag_settings = (tags and tags.crafting_combinator_data and tags.crafting_combinator_data.settings)
+	local tag_settings =
+		(tags and tags.settings) or -- Some events still store settings directly in tags
+		(tags and tags.crafting_combinator_data and tags.crafting_combinator_data.settings)
 	if tag_settings then return tag_settings end
 	
 	local migrated_settings = migrated_state and migrated_state.settings
