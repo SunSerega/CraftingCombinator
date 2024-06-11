@@ -298,7 +298,11 @@ end)
 ---@param tick uint
 ---@param rate uint
 local function run_update(tab, tick, rate)
-	for i = tick % (rate + 1) + 1, #tab, (rate + 1) do tab[i]:update(nil, tick); end
+	local i = tick % (rate + 1) + 1
+	while i <= #tab do
+		tab[i]:update(nil, tick);
+		i = i + rate + 1
+	end
 end
 
 ---@param event EventData.on_tick
