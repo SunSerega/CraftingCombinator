@@ -249,7 +249,7 @@ local function on_destroyed(event) -- on_entity_died, on_player_mined_entity, on
 			end
 		end
 		global.main_uid_by_part_uid[module_chest_uid] = nil
-	elseif entity_name == config.RC_NAME then
+	elseif entity_name == config.RC_NAME or entity_name == config.RC_NAME_PACKED then
 		local output_proxy = global.rc.data[entity.unit_number].output_proxy
 		local output_proxy_uid = output_proxy.unit_number
 		if event_name == defines.events.on_entity_died
